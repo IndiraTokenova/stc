@@ -15,10 +15,8 @@ public class PersonManager {
         for (int i = 0; i < size; i++) {
 
             //generate age
-            int max = 100;
-            int min = 1;
             Random rand = new Random();
-            int age = rand.nextInt((max - min) + 1) + min;
+            int age = rand.nextInt(100);
 
             persons[i] = new Person(age, Sex.getSex(rand.nextBoolean()), generateName(nameSize));
         }
