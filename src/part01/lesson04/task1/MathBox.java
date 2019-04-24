@@ -1,6 +1,6 @@
-package part01.lesson4.task1;
+package part01.lesson04.task1;
 
-import part01.lesson4.task2.ObjectBox;
+import part01.lesson04.task2.ObjectBox;
 
 import java.util.Arrays;
 import java.util.HashSet;

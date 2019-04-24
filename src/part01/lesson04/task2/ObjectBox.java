@@ -1,8 +1,6 @@
-package part01.lesson4.task2;
+package part01.lesson04.task2;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class ObjectBox {

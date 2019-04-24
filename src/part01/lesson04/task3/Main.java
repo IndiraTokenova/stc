@@ -1,6 +1,6 @@
-package part01.lesson4.task3;
+package part01.lesson04.task3;
 
-import part01.lesson4.task1.MathBox;
+import part01.lesson04.task1.MathBox;
 
 import java.util.Random;
 
