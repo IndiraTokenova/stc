@@ -3,13 +3,13 @@ package part01.lesson02.task03;
 /**
  * @author indira [19.04.2019]
  * */
-public class PersonSorter {
+public class Main {
 
     public static void main(String[] args) {
 
         try {
             PersonManager manager = new PersonManager();
-            Sorter sorter = new Sorter();
+            PersonsSorter sorter = new PersonsSorter();
 
             Person[] persons1 = manager.fillPersonsData(15000, 7);
 

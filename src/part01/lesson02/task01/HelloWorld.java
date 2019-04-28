@@ -1,5 +1,7 @@
 package part01.lesson02.task01;
 
+import java.util.Scanner;
+
 /**
  * @author indira [18.04.2019]
  * */
@@ -7,21 +9,23 @@ public class HelloWorld {
 
     public static void main(String[] args) {
 
-
         try {
-            throwNullPointerExc();
+            throwNullPointerException();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
-            throwArrInd();
+            throwArrayIndexOutOfBoundsException();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
-            throwCustomException(-1);
+            System.out.print("Input negative number: ");
+            Scanner scanner = new Scanner(System.in);
+            int number = Integer.valueOf(scanner.nextLine());
+            throwCustomException(number);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,32 +35,26 @@ public class HelloWorld {
     /**
      * Method throw NullPointerException
      */
-    private static void throwNullPointerExc() {
-
+    private static void throwNullPointerException() {
         String str1 = null;
-        String str2 = "Hello World!";
-
-        if (str1.equals(str2)) {
-            System.out.println(str2);
-        }
+        System.out.println(str1.charAt(5));
     }
 
     /**
      * Method throw ArrayIndexOutOfBoundsException
      */
-    private static void throwArrInd() {
+    private static void throwArrayIndexOutOfBoundsException() {
         int[] a = new int[10];
         System.out.println(a[11]);
     }
 
     /**
      * Method throw ArithmeticException
-     *
-     * @param a number
+     * @param number negative integer number
      * */
-    private static void throwCustomException(int a) {
-        if(a < 0) {
-            throw new ArithmeticException("a is a negative number");
+    private static void throwCustomException(int number) {
+        if(number < 0) {
+            throw new ArithmeticException(number + " is a negative number");
         }
     }
 

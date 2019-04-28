@@ -1,12 +1,24 @@
 package part01.lesson04.task1;
 
 import java.util.Random;
+import java.util.Scanner;
 
+/**
+ * @author indira [20.04.2019]
+ * */
 public class Main {
 
     public static void main(String[] args) {
+
+        System.out.print("Input length of array: ");
+        Scanner scanner = new Scanner(System.in);
+        int length = Integer.valueOf(scanner.nextLine());
+
+        System.out.print("Input max number of array element: ");
+        int bound = Integer.valueOf(scanner.nextLine());
+
         //init new array
-        Number[] array = initArray(15, 20);
+        Number[] array = fillArray(length, bound);
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
@@ -40,10 +52,15 @@ public class Main {
 
     }
 
-    private static Number[]  initArray(int size, int bound){
-        Number[] array = new Number[size];
+    /**
+     * method fill array
+     * @param length size of array
+     * @param bound max value of random number
+     * */
+    private static Number[] fillArray(int length, int bound){
+        Number[] array = new Number[length];
         Random rand = new Random();
-        for (int i = 0; i < size; i ++) {
+        for (int i = 0; i < length; i ++) {
             array[i] = rand.nextInt(bound);
         }
         return array;

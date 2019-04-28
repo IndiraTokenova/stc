@@ -13,11 +13,10 @@ public class MathBox extends ObjectBox {
 
     private Set<Number> numsSet = new HashSet<>();
 
-    public MathBox(Number[] nums) {
-        numsSet.addAll(Arrays.asList(nums));
+    public MathBox(Number[] numbers) {
+        numsSet.addAll(Arrays.asList(numbers));
     }
 
-    //region Custom methods
     /**
      * @return sum of the numSet elements
      * */
@@ -60,15 +59,11 @@ public class MathBox extends ObjectBox {
     public boolean removeNumber(Number number) {
         return numsSet.remove(number);
     }
-    //endregion
 
-    //region getter
     public Set<Number> getNumsSet() {
         return numsSet;
     }
-    //endregion
 
-    //region Override methods
     @Override
     public int hashCode() {
         int summa = (int) Math.round(summator());
@@ -115,6 +110,5 @@ public class MathBox extends ObjectBox {
             e.printStackTrace();
         }
     }
-    //endregion
 
 }
