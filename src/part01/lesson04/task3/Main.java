@@ -1,6 +1,7 @@
 package part01.lesson04.task3;
 
 import part01.lesson04.task1.MathBox;
+import part01.lesson04.task2.ObjectBox;
 
 import java.util.Random;
 
@@ -34,4 +35,6 @@ public class Main {
         }
         return array;
     }
+
+
 }

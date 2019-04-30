@@ -3,7 +3,7 @@ package part01.lesson02.task03;
 /**
  * @author indira [19.04.2019]
  * */
-public class Person {
+public class Person implements Comparable<Person> {
 
     private int age;
 
@@ -11,18 +11,12 @@ public class Person {
 
     private String name;
 
-    //region Constructors
-    public Person() {
-    }
-
     public Person(int age, Sex sex, String name) {
         this.age = age;
         this.sex = sex;
         this.name = name;
     }
-    //endregion
 
-    //region getters & setters
     public int getAge() {
         return age;
     }
@@ -46,5 +40,25 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
-    //endregion
+
+    @Override
+    public int compareTo(Person another) {
+        int comparison = name.compareTo(another.name);
+        if (comparison != 0) {
+            return comparison;
+        }
+        return comparison;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Person anotherPerson = (Person) obj;
+        return age == anotherPerson.age && sex == anotherPerson.sex && name.equals(anotherPerson.name);
+
+    }
 }

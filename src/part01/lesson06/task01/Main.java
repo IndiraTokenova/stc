@@ -3,17 +3,12 @@ package part01.lesson06.task01;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+/**
+ * @author indira
+ * */
 public class Main {
-
-    /**
-     *  Написать программу, читающую текстовый файл. Программа должна составлять отсортированный
-     *  по алфавиту список слов, найденных в файле и сохранять его в файл-результат.
-     *  Найденные слова не должны повторяться, регистр не должен учитываться.
-     *  Одно слово в разных падежах – это разные слова.
-     * */
 
     public static void main(String[] args) {
 
@@ -24,18 +19,19 @@ public class Main {
 
             String textFromFile = new String(data);
 
-            List<String> strList = new ArrayList<>();
+            Set<String> strSet = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 
             StringBuilder str = new StringBuilder();
             for (int i = 0; i < textFromFile.length(); i++) {
                 if (textFromFile.charAt(i) == '\n' || textFromFile.charAt(i) == '\t' || textFromFile.charAt(i) == ' ') {
-                    strList.add(str.toString());
+                    strSet.add(str.toString());
                     str = new StringBuilder();
                 } else {
                     str.append(textFromFile.charAt(i));
                 }
             }
-            System.out.println(strList);
+            System.out.println(strSet);
+
 
         } catch (IOException e) {
             e.printStackTrace();

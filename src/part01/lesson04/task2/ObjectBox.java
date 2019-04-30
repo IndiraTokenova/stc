@@ -5,13 +5,6 @@ import java.util.Set;
 
 public class ObjectBox {
 
-    /**
-     * Задание 2. Создать класс ObjectBox, который будет хранить коллекцию Object.
-     * У класса должен быть метод addObject, добавляющий объект в коллекцию.
-     * У класса должен быть метод deleteObject, проверяющий наличие объекта в коллекции и при наличии удаляющий его.
-     * Должен быть метод dump, выводящий содержимое коллекции в строку.
-     * */
-
     Set<Object> objects = new HashSet<>();
 
     public void addObject(Object object) {
@@ -22,8 +15,8 @@ public class ObjectBox {
         return objects.remove(object);
     }
 
-    public void dump() {
-        System.out.println(objects);
+    public String dump() {
+        return objects.toString();
     }
 
     public Set<Object> getObjects() {
