@@ -12,14 +12,47 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        FileManager manager = new FileManager();
-        String str = manager.generateParagraph();
+        File file = null;
+        FileOutputStream outStream = null;
+        try {
+            FileManager manager = new FileManager();
+            String str = manager.generateText();
 
         /*PrintWriter printer  = new PrintWriter(new FileOutputStream("qwe.txt", true));
         printer.print(str);*/
 
-        OutputStream out = new FileOutputStream("asd.txt");
-        out.write(str.getBytes(Charset.forName("UTF-8")));
+            file = new File("asd.txt");
+            outStream = new FileOutputStream(file);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            manager.getFiles("\\files", 5, 6000, manager.generateWordsArray(), 5);
+
+
+            byte[] text = str.getBytes(Charset.forName("UTF-8"));
+            System.out.println(str);
+            outStream.write(str.getBytes(/*Charset.forName("UTF-8")*/));
+
+            outStream.flush();
+            outStream.close();
+
+           // manager.generateWordsArray();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (outStream != null) {
+                    outStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
 
 
 

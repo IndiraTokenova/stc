@@ -29,6 +29,8 @@ public class FileManager {
     private static final String marks = ".!?";
     private static final int maxWordsAndLettersNumber = 15;
     private static final int maxSentencesNumber = 20;
+    private static final int maxSizeOfWordsArray = 1000;
+    private static final int maxParagraphsNumber = 5;
 
     /**
      * @param path        of file
@@ -48,7 +50,7 @@ public class FileManager {
      * @return generated word
      */
     private String generateWord(boolean isFirstWordOfSentence, boolean isLastWordOfSentence) {
-        int wordSize = new Random().nextInt(maxWordsAndLettersNumber);
+        int wordSize = new Random().nextInt(maxWordsAndLettersNumber) + 1;
         StringBuilder word = new StringBuilder(wordSize);
 
         for (int i = 0; i < wordSize; i++) {
@@ -67,18 +69,18 @@ public class FileManager {
      */
     private String generateSentence() {
         StringBuilder sentence = new StringBuilder(generateWord(true, false));
-        int wordsNumber = new Random().nextInt(maxWordsAndLettersNumber);
+        int wordsNumber = new Random().nextInt(maxWordsAndLettersNumber) + 1;
         int commaPosition = new Random().nextInt(wordsNumber);
         for (int i = 0; i < wordsNumber; i++) {
             sentence.append(generateWord(false, false));
-            if (i == commaPosition && commaPosition != wordsNumber - 1) {
+            if (i == commaPosition && commaPosition != wordsNumber - 1 && new Random().nextBoolean()) {
                 sentence.setLength(sentence.length() - 1);
-                sentence.append(",");
+                sentence.append(", ");
             }
         }
         int index = (int) (marks.length() * Math.random());
         String mark = String.valueOf(marks.charAt(index));
-        sentence.append(generateWord(false, true)).append(mark).append(" ");
+        sentence.append(generateWord(false, true)).append(mark);
         return sentence.toString();
     }
 
@@ -87,12 +89,30 @@ public class FileManager {
      *
      * @return generated sentence
      */
-    public String generateParagraph() {
+    private String generateParagraph(boolean isLastParagraph) {
         StringBuilder paragraph = new StringBuilder();
-        int sentencesNumber = new Random().nextInt(maxSentencesNumber);
+        int sentencesNumber = new Random().nextInt(maxSentencesNumber) + 1;
         for (int i = 0; i < sentencesNumber; i++) {
             paragraph.append(generateSentence()).append(" ");
         }
-        return paragraph.append("\n").append("\r").toString();
+        return paragraph.append(isLastParagraph ? " " : "\n\r").toString();
+    }
+
+    public String[] generateWordsArray() {
+        String[] words = new String[new Random().nextInt(maxSizeOfWordsArray) + 1];
+        for (int i = 0; i < words.length; i++) {
+            words[i] = generateWord(false, true);
+        }
+
+        return words;
+    }
+
+    public String generateText() {
+        StringBuilder text = new StringBuilder();
+        int paragraphsNumber= new Random().nextInt(maxParagraphsNumber) + 1;
+        for(int i = 0; i < paragraphsNumber; i ++) {
+            text.append(generateParagraph(i == paragraphsNumber - 1));
+        }
+        return text.toString();
     }
 }
