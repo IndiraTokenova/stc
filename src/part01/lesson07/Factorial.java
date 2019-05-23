@@ -2,7 +2,7 @@ package part01.lesson07;
 
 import java.math.BigInteger;
 
-class Factorial implements Runnable {
+public class Factorial implements Runnable {
 
     private int k;
     private BigInteger result = BigInteger.ONE;

@@ -21,6 +21,18 @@ public class FactorialCounter {
         return array;
     }
 
+    public List<Integer> getList() {
+        System.out.print("Input array size: ");
+        Scanner scanner = new Scanner(System.in);
+        int listSize = Integer.valueOf(scanner.nextLine());
+
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < listSize; i ++) {
+            list.add(new Random().nextInt(1000) + 1);
+        }
+        return list;
+    }
+
     public void countInOneThread(int array[]) {
 
         long startTime = System.nanoTime();
