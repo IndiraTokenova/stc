@@ -32,10 +32,8 @@ public class Main {
             }
             System.out.println(strSet);
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

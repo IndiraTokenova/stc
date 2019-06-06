@@ -16,7 +16,7 @@ public class Main {
         FileOutputStream outStream = null;
         try {
             FileManager manager = new FileManager();
-            String str = manager.generateText();
+            //String str = manager.generateText();
 
         /*PrintWriter printer  = new PrintWriter(new FileOutputStream("qwe.txt", true));
         printer.print(str);*/
@@ -30,10 +30,10 @@ public class Main {
 
             manager.getFiles("\\files", 5, 6000, manager.generateWordsArray(), 5);
 
-
+/*
             byte[] text = str.getBytes(Charset.forName("UTF-8"));
             System.out.println(str);
-            outStream.write(str.getBytes(/*Charset.forName("UTF-8")*/));
+            outStream.write(str.getBytes(*//*Charset.forName("UTF-8")*//*));*/
 
             outStream.flush();
             outStream.close();
