@@ -7,17 +7,18 @@ import java.util.Properties;
 
 public class ConnectionManager {
 
-    private static String dbDriver = "com.mysql.jdbc.Driver";
-    private static String dbServer;
-    private static String dbLogin;
-    private static String dbPassword;
+    private static String dbDriver = "org.postgresql.Driver";
+    private static String dbLogin = "root";
+    private static String dbPassword = "root";
+    private static String url = "jdbc:postgresql://localhost:5432/postgres";
 
     public static Connection getConnection() throws SQLException {
 
         try {
             Class.forName(dbDriver);
+
         } catch (Exception e) {
-            throw new SQLException(e.getMessage());
+            e.printStackTrace();
         }
 
         Properties prop = new Properties();
@@ -25,10 +26,9 @@ public class ConnectionManager {
         prop.setProperty("login", dbLogin);
         prop.setProperty("password", dbPassword);
 
-        return (Connection) DriverManager.getConnection(dbServer, prop);
+        return DriverManager.getConnection(url, prop);
 
     }
-
 
 
 }
